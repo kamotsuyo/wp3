@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Easiest WP</title>
-    <link rel="stylesheet" href="style.css" />
+    <!--    linkタグをコメントアウト-->
+    <!--    <link rel="stylesheet" href="style.css" />-->
+    <!--    wp_head()関数をheadタグの直前に追記-->
+    <?PHP wp_head();?>
 </head>
 
 <body>
@@ -150,7 +153,8 @@
         </div>
     </footer>
 
-
+    <!--wp_footer()をbodyタグの直前に追記-->
+    <?php wp_footer()?>
 </body>
 
 </html>
