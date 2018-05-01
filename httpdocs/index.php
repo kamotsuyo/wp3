@@ -6,6 +6,10 @@
  * @package WordPress
  */
 
+//ログ・デバッグ管理用のオリジナル関数をrequire
+require_once('../kamo_debug/kam_mlog.php');
+
+
 /**
  * Tells WordPress to load the WordPress theme and output it.
  *
