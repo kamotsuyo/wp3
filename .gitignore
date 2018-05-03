@@ -1,4 +1,3 @@
 wp-includes/
 wp-admin/
-
-.log
+*.log

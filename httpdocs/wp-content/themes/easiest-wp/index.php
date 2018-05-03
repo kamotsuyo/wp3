@@ -1,22 +1,27 @@
 <!DOCTYPE HTML>
-<html lang="ja">
+<html <?php language_attributes();?>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Easiest WP</title>
-    <!--    linkタグをコメントアウト-->
-    <!--    <link rel="stylesheet" href="style.css" />-->
-    <!--    wp_head()関数をheadタグの直前に追記-->
+
+
+    <!--        wp_head()関数をheadタグの直前に追記-->
     <?PHP wp_head();?>
 </head>
 
-<body>
+<body <?php body_class()?>>
     <header class="page-header">
         <div class="header-area">
             <div class="panel-site-title">
-                <p class="site-title"><a href="index.html">Easiest WP</a></p>
-                <p class="site-subtitle">Just another WordPress site</p>
+                <p class="site-title">
+                    <a href="<?php echo esc_url(home_url());?>">
+                        <?php bloginfo('name');?>
+                    </a>
+                </p>
+                <p class="site-subtitle">
+                    <?php bloginfo('description');?>
+                </p>
             </div>
             <nav class="global-nav">
                 <ul id="global-menu" class="menu">
