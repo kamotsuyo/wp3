@@ -9,9 +9,12 @@ require_once('wp-load.php');
 
 global $wpdb;
 
+//wp_postsテーブルから投稿記事のみを抽出する
 $results=$wpdb->get_results("select * from wp_posts where post_status = 'publish' and post_type = 'post' ");
 
+
+//結果セットからタイトルと内容をエコーする
 for($i=0; $i<count($results);$i++){
     $low = $results[$i];
-    echo $low->post_title .  "\n". $low->post_type . '<br/>' ;
+    echo $low->post_title .  "\n". $low->post_content . '<br/>' ;
 }
