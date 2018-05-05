@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <!--        wp_head()関数をheadタグの直前に追記-->
+    <!--wp_head()関数をheadタグの直前に追記-->
     <?PHP wp_head();?>
 </head>
 
@@ -16,11 +16,11 @@
             <div class="panel-site-title">
                 <p class="site-title">
                     <a href="<?php echo esc_url(home_url());?>">
-                        <?php bloginfo('name');?>
+                        <?php bloginfo("name");?>
                     </a>
                 </p>
                 <p class="site-subtitle">
-                    <?php bloginfo('description');?>
+                    <?php bloginfo("description");?>
                 </p>
             </div>
             <nav class="global-nav">
@@ -35,70 +35,52 @@
         </div>
     </header>
 
+
     <div class="hero"></div>
     <div class="content-area has-side-col">
         <div class="main-column">
             <h1 class="box-heading box-heading-main-col">Blog</h1>
             <div class="box-content">
-
+                <!--記事一覧表示-->
+                <?php if(have_posts()):?>
                 <ul class="archive">
+                    <?php while(have_posts()):?>
+                    <?php the_post();?>
                     <li class="item-archive">
                         <div class="time-and-thumb-archive">
-                            <time class="pub-date" datetime="2017-04-01T23:59:99+09:00">2017年4月1日</time>
-                            <p class="thumb thumb-archive"><a href="single.html"><img src="http://placehold.it/190x130"></a></p>
-                        </div>
-                        <div class="data-archive">
-                            <p class="list-categories-archive"><a href="archive.html">カテゴリ名</a></p>
-                            <h2 class="title-archive"><a href="single.html">記事タイトル記事タイトル記事タイトル記事タイトル</a></h2>
-                            <p class="list-tags-archive">タグ: <a href="archive.html">タグ名</a>, <a href="archive.html">タグ名</a>, <a href="archive.html">タグ名</a>, <a href="archive.html">タグ名</a></p>
-                        </div>
-                    </li>
-                    <li class="item-archive">
-                        <div class="time-and-thumb-archive">
-                            <time class="pub-date" datetime="2017-04-01T23:59:99+09:00">2017年4月1日</time>
-                            <p class="thumb thumb-archive"><a href="single.html"><img src="http://placehold.it/190x130"></a></p>
-                        </div>
-                        <div class="data-archive">
-                            <p class="list-categories-archive"><a href="archive.html">カテゴリ名</a></p>
-                            <h2 class="title-archive"><a href="single.html">記事タイトル記事タイトル記事タイトル記事タイトル</a></h2>
-                            <p class="list-tags-archive">タグ: <a href="archive.html">タグ名</a>, <a href="archive.html">タグ名</a>, <a href="archive.html">タグ名</a>, <a href="archive.html">タグ名</a></p>
-                        </div>
-                    </li>
-                    <li class="item-archive">
-                        <div class="time-and-thumb-archive">
-                            <time class="pub-date" datetime="2017-04-01T23:59:99+09:00">2017年4月1日</time>
-                            <p class="thumb thumb-archive"><a href="single.html"><img src="http://placehold.it/190x130"></a></p>
-                        </div>
-                        <div class="data-archive">
-                            <p class="list-categories-archive"><a href="archive.html">カテゴリ名</a></p>
-                            <h2 class="title-archive"><a href="single.html">記事タイトル記事タイトル記事タイトル記事タイトル</a></h2>
-                            <p class="list-tags-archive">タグ: <a href="archive.html">タグ名</a>, <a href="archive.html">タグ名</a>, <a href="archive.html">タグ名</a>, <a href="archive.html">タグ名</a></p>
-                        </div>
-                    </li>
-                    <li class="item-archive">
-                        <div class="time-and-thumb-archive">
-                            <time class="pub-date" datetime="2017-04-01T23:59:99+09:00">2017年4月1日</time>
-                            <p class="thumb thumb-archive"><a href="single.html"><img src="http://placehold.it/190x130"></a></p>
-                        </div>
-                        <div class="data-archive">
-                            <p class="list-categories-archive"><a href="archive.html">カテゴリ名</a></p>
-                            <h2 class="title-archive"><a href="single.html">記事タイトル記事タイトル記事タイトル記事タイトル</a></h2>
-                            <p class="list-tags-archive">タグ: <a href="archive.html">タグ名</a>, <a href="archive.html">タグ名</a>, <a href="archive.html">タグ名</a>, <a href="archive.html">タグ名</a></p>
-                        </div>
-                    </li>
-                    <li class="item-archive">
-                        <div class="time-and-thumb-archive">
-                            <time class="pub-date" datetime="2017-04-01T23:59:99+09:00">2017年4月1日</time>
-                            <p class="thumb thumb-archive"><a href="single.html"><img src="http://placehold.it/190x130"></a></p>
-                        </div>
-                        <div class="data-archive">
-                            <p class="list-categories-archive"><a href="archive.html">カテゴリ名</a></p>
-                            <h2 class="title-archive"><a href="single.html">記事タイトル記事タイトル記事タイトル記事タイトル</a></h2>
-                            <p class="list-tags-archive">タグ: <a href="archive.html">タグ名</a>, <a href="archive.html">タグ名</a>, <a href="archive.html">タグ名</a>, <a href="archive.html">タグ名</a></p>
-                        </div>
-                    </li>
-                </ul>
+                            <!--投稿日　echo get_the_date()  -->
+                            <time class="pub-date" dateitme="<?php echo get_the_date(DATE_W3C);?>"><?php echo get_the_date();?></time>
+                            <p class="thumb thumb-archive">
+                                <!--個別ページへのリンク部分 the_permalink() -->
+                                <a href="<?php the_permalink();?>"><img src="http://placehold.it"></a>
+                            </p>
 
+                        </div>
+                        <div class="data-archive">
+                            <p class="list-categories-archive">
+                                <!-- カテゴリー the_category() -->
+                                <!-- the_category()関数は 初期設定では区切り文字が指定されていないため、第一引数にカンマと半角スペースを区切り文字として指定する-->
+                                <?php the_category(', ');?>
+                            </p>
+
+                            <h2 class="title_archive">
+                                <a href="<?php the_permalink();?>">
+                                    <!--記事タイトル the_title() -->
+                                    <?php the_title();?>
+                                </a>
+                            </h2>
+                            <!-- タグ名 the_tags() -->
+                            <!-- 初期設定で複数のタグがある場合でもカンマと半角スペースで区切って表示される -->
+                            <p class="list-tags-archive">
+                                <?php the_tags();?>
+                            </p>
+                        </div>
+                    </li>
+                    <?php endwhile;?>
+                </ul>
+                <?php else:?>
+                <p>記事がありません。</p>
+                <?php endif;?>
             </div>
 
             <nav class="pagination">
