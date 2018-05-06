@@ -17,5 +17,12 @@ add_action('wp_enqueue_scripts' , 'k_load_scripts');
 //テーマサポートを追加
 function easistwp_setup(){
     add_theme_support('title-tag');
+
+    //アイキャッチ画像を有効化
+    add_theme_support('post-thumbnails');
+    //テーマ専用の画像サイズの追加
+    add_image_size('easiestwp-thumbnail',190,130,true);
+    //ヒーローイメージ（トップページや記事ページの先頭に大きく表示される画像のこと）画像サイズの追加
+    add_image_size('easiestwp-hero',1200,630,true);
 }
 add_action('after_setup_theme','easistwp_setup');

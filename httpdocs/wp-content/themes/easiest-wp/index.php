@@ -50,10 +50,14 @@
                         <div class="time-and-thumb-archive">
                             <!--投稿日　echo get_the_date()  -->
                             <time class="pub-date" dateitme="<?php echo get_the_date(DATE_W3C);?>"><?php echo get_the_date();?></time>
+                            <?php if(has_post_thumbnail()):?>
                             <p class="thumb thumb-archive">
                                 <!--個別ページへのリンク部分 the_permalink() -->
-                                <a href="<?php the_permalink();?>"><img src="http://placehold.it"></a>
+                                <a href="<?php the_permalink();?>">
+                                    <?php the_post_thumbnail('easiestwp-thumbnail');?>
+                                </a>
                             </p>
+                            <?php endif;?>
 
                         </div>
                         <div class="data-archive">
