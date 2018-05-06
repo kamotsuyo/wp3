@@ -24,5 +24,7 @@ function easistwp_setup(){
     add_image_size('easiestwp-thumbnail',190,130,true);
     //ヒーローイメージ（トップページや記事ページの先頭に大きく表示される画像のこと）画像サイズの追加
     add_image_size('easiestwp-hero',1200,630,true);
+    //ナビゲーションを利用する
+    register_nav_menus(array('global'=>'Global Menu',));
 }
 add_action('after_setup_theme','easistwp_setup');

@@ -23,14 +23,18 @@
                     <?php bloginfo("description");?>
                 </p>
             </div>
-            <nav class="global-nav">
-                <ul id="global-menu" class="menu">
-                    <li class="current-menu-item"><a href="index.html">ホーム</a></li>
-                    <li><a href="portfolio.html">ポートフォリオ</a></li>
-                    <li><a href="profile.html">プロフィール</a></li>
-                    <li><a href="contact.html">お問い合わせ</a></li>
-                </ul>
-            </nav>
+            <!--グローバルナビゲーションメニュー-->
+            <?php
+            if(has_nav_menu('global')):
+                $global_menu_array = array('theme_location'=>'global'
+                                           ,'menu_id'=>'global-menu'
+                                           ,'container'=>'nav'
+                                           ,'container_class'=>'global-nav');
+                wp_nav_menu($global_menu_array);        
+                
+            endif;
+            ?>
+
 
         </div>
     </header>
@@ -92,12 +96,23 @@
                     <!--ページネーション送り用 配列 -->
                     <!-- 矢印の画像で表示させる -->
                     <?php
-                    $prev_img = '<img class="arrow" src = "' .get_theme_file_uri() . '/images/arrow-left.png" "srcset="' . get_theme_file_uri() . '/images/arrow-left@2x.png 2x" alt="前へ">';
-                    $next_img = '<img class="arrow" src = "' .get_theme_file_uri() . '/images/arrow-right.png" "srcset="' . get_theme_file_uri() . '/images/arrow-right@2x.png 2x" alt="前へ">';
+                    $prev_img = '<img class="arrow" src = "' 
+                        . get_theme_file_uri() 
+                        . '/images/arrow-left.png" "srcset="' 
+                        . get_theme_file_uri() 
+                        . '/images/arrow-left@2x.png 2x" alt="前へ">';
+                    $next_img = '<img class="arrow" src = "' 
+                        . get_theme_file_uri() 
+                        . '/images/arrow-right.png" "srcset="' 
+                        . get_theme_file_uri() 
+                        . '/images/arrow-right@2x.png 2x" alt="前へ">';
 
-                    $pagenation_array = array('prev_text'=>$prev_img,'next_text'=>$next_img);?>
-                        <!--ページネーション the_posts_pagenation() -->
-                        <?php the_posts_pagination($pagenation_array);?>
+                    $pagenation_array = array('prev_text'=>$prev_img,'next_text'=>$next_img);
+                    
+                    
+                    //ページネーション the_posts_pagenation()
+                    the_posts_pagination($pagenation_array);
+                    ?>
                 </div>
             </nav>
 
